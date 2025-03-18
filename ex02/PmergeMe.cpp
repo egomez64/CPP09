@@ -73,7 +73,7 @@ void fordjd(std::deque<int> &tab)
 {
 	for (size_t i = 0; i < tab.size() - 1; i+=2)
 	{
-		if (tab[i] > tab[i+1])
+		if (tab[i + 1] && tab[i] > tab[i+1])
 			std::swap(tab[i], tab[i+1]);
 	}
 
@@ -169,7 +169,7 @@ std::vector<int> initv(char **lst, int ac)
 {
 	std::vector<int> res;
 	std::string num;
-	int y = 0;
+	int y = 1;
 
 	while (y < ac)
 	{
@@ -181,7 +181,7 @@ std::vector<int> initv(char **lst, int ac)
 				res.push_back(std::atoi(line.c_str()));
 				num.clear();
 			}
-			if (line[i] == ' ')
+			else if (line[i] == ' ')
 			{
 				if (num.size() > 0)
 				{
@@ -189,7 +189,13 @@ std::vector<int> initv(char **lst, int ac)
 					num.clear();
 				}
 			}
-			num.push_back(line[i]);
+			else
+				num.push_back(line[i]);
+		}
+		if (num.size() > 0)
+		{
+			res.push_back(std::atoi(num.c_str()));
+			num.clear();
 		}
 		y++;
 	}
@@ -212,7 +218,7 @@ std::deque<int> initd(char **lst, int ac)
 				res.push_back(std::atoi(line.c_str()));
 				num.clear();
 			}
-			if (line[i] == ' ')
+			else if (line[i] == ' ')
 			{
 				if (num.size() > 0)
 				{
@@ -220,7 +226,13 @@ std::deque<int> initd(char **lst, int ac)
 					num.clear();
 				}
 			}
-			num.push_back(line[i]);
+			else
+				num.push_back(line[i]);
+		}
+		if (num.size() > 0)
+		{
+			res.push_back(std::atoi(num.c_str()));
+			num.clear();
 		}
 		y++;
 	}

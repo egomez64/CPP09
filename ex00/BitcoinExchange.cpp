@@ -86,7 +86,7 @@ int Btc::check_line_in(const std::string &line)
 			return FORMAT;
 		if (i == 11 && line[i] != '|')
 			return FORMAT;
-		if (i > 12 && ((line[i] < '0' || line[i] > '9') && (line[i] != '.' || line[i] != '-')))
+		if (i > 12 && ((line[i] < '0' || line[i] > '9') && (line[i] != '.' && line[i] != '-')))
 			return BAD_VALUE;
 		i++;
 	}
